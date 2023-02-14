@@ -3,16 +3,24 @@
 </template>
 
 <script>
+
 export default {
   name:'naverMap',
-  components:{
-  },
   data(){
     return{
-
+      mapOptions : {
+          center: new naver.maps.LatLng(37.3595704, 127.105399),
+          zoom: 10
+      },
     }
   },
-}
+  components:{
+
+  },
+  mounted(){
+    var map = new naver.maps.Map('map', this.mapOptions);
+  }
+}  
 </script>
 
 <style>
