@@ -10,6 +10,43 @@ export default {
   name: 'App',
   components: {
     Main
+  },
+  data(){
+    return{
+      lat:37.3595704,
+      lng:127.105399,
+    }
+  },
+  mounted(){
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+      var crd = pos.coords;
+
+      if(crd){
+        this.lat = crd.latitude;
+        this.lng = crd.longitude;
+      }else{
+        this.lat = crd.latitude;
+        this.lng = crd.longitude;
+      }
+
+      console.log('Your current position is:');
+      console.log('Latitude : ' + crd.latitude);
+      console.log('Longitude: ' + crd.longitude);
+      console.log('More or less ' + crd.accuracy + ' meters.');
+    };
+
+    function error(err) {
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    console.log(this.mapOptions.lat,this.mapOptions.lng)
   }
 }
 </script>
