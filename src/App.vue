@@ -1,5 +1,7 @@
 <template>
+  <!-- 로고 k리그 관련 이미지로 바꾸기 -->
   <img alt="Vue logo" src="./assets/logo.png">
+  
   <Main />
 </template>
 
@@ -18,35 +20,37 @@ export default {
     }
   },
   mounted(){
-    var options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
+    // var options = {
+    //   enableHighAccuracy: true,
+    //   timeout: 5000,
+    //   maximumAge: 0
+    // };
 
-    function success(pos) {
-      var crd = pos.coords;
+    // function success(pos) {
+    //   var crd = pos.coords;
 
-      if(crd){
-        this.lat = crd.latitude;
-        this.lng = crd.longitude;
-      }else{
-        this.lat = crd.latitude;
-        this.lng = crd.longitude;
-      }
+    //   // if(crd){
+    //   //   this.lat = crd.latitude;
+    //   //   this.lng = crd.longitude;
+    //   // }else{
+    //   //   this.lat = crd.latitude;
+    //   //   this.lng = crd.longitude;
+    //   // }
+    //   this.lat = crd.latitude;
+    //   this.lng = crd.longitude;
 
-      console.log('Your current position is:');
-      console.log('Latitude : ' + crd.latitude);
-      console.log('Longitude: ' + crd.longitude);
-      console.log('More or less ' + crd.accuracy + ' meters.');
-    };
+    //   console.log('Your current position is:');
+    //   console.log('Latitude : ' + crd.latitude);
+    //   console.log('Longitude: ' + crd.longitude);
+    //   console.log('More or less ' + crd.accuracy + ' meters.');
+    // };
 
-    function error(err) {
-      console.warn('ERROR(' + err.code + '): ' + err.message);
-    };
+    // function error(err) {
+    //   console.warn('ERROR(' + err.code + '): ' + err.message);
+    // };
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
-    console.log(this.mapOptions.lat,this.mapOptions.lng)
+    // navigator.geolocation.getCurrentPosition(success, error, options);
+    //console.log(this.mapOptions.lat,this.mapOptions.lng)
   }
 }
 </script>
@@ -58,6 +62,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: aqua;
   margin-top: 60px;
+  height: 100%;
+  width: 100%;
 }
 </style>

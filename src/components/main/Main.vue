@@ -1,5 +1,5 @@
 <template>
-  <div class="naverMap" id="map" style="width:100%;height:400px;"></div>
+  <div class="naverMap" id="map"></div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
     return{
       mapOptions : {
           center: new naver.maps.LatLng(37.3595704, 127.105399),
-          zoom: 14,
+          zoom: 8,
           lat: 37.3595704,
           lng: 127.105399,
       },
@@ -23,8 +23,9 @@ export default {
     // var map = new naver.maps.Map('map', this.mapOptions);
     var map = new naver.maps.Map('map', {
           center: new naver.maps.LatLng(this.mapOptions.lat,this.mapOptions.lng), //좌표
-          zoom: 14, //지도의 초기 줌 레벨
-          minZoom: 1, //지도의 최소 줌 레벨
+          zoom: 6, //지도의 초기 줌 레벨
+          minZoom: 6, //지도의 최소 줌 레벨,
+          maxZoom : 14, // 지도 최대 줌 레벨
           draggable: true,
           pinchZoom: true,
           scrollWheel: true,
@@ -76,5 +77,8 @@ export default {
 </script>
 
 <style>
-
+.naverMap{
+  width: 400px;
+  height: 400px;
+}
 </style>
