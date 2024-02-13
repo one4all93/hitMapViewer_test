@@ -36,9 +36,9 @@ export default {
     }
   },
   created(){
-    fetch('https://www.kleague.com/record/teamRank.do?leagueId=1&year=2024&stadium=all&recordType=rank').then(res=>{
-      console.log('res',res);
-    })
+    // fetch('https://www.kleague.com/record/teamRank.do?leagueId=1&year=2024&stadium=all&recordType=rank').then(res=>{
+    //   console.log('res',res);
+    // })
   },
   mounted(){
     // axios.get('https://jsonplaceholder.typicode.com/posts/1')
