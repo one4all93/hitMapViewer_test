@@ -1,17 +1,33 @@
 <template>
   <!-- 로고 k리그 관련 이미지로 바꾸기 -->
-  <img alt="Vue logo" src="./assets/logo.png">
-  
-  <Main />
+  <img class="mainLogo" alt="K-league logo" src="./assets/kMarker.svg">
+
+  <div class="mainSection">
+    <!-- 구단 리스트 -->
+    <TeamList />
+
+    <!-- naver_map -->
+    <Map />
+
+    <!-- 선택한 팀 정보 팝업 -->
+    <SelectedList />
+  </div>
+
 </template>
 
 <script>
-import Main from '@/components/main/Main.vue'
+import TeamList from '@/components/main/TeamList.vue'
+import Map from '@/components/main/Main.vue'
+import SelectedList from '@/components/main/SelectedList.vue'
+
+// import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    Main
+    TeamList,
+    Map,
+    SelectedList,
   },
   data(){
     return{
@@ -19,38 +35,19 @@ export default {
       lng:127.105399,
     }
   },
+  created(){
+    fetch('https://www.kleague.com/record/teamRank.do?leagueId=1&year=2024&stadium=all&recordType=rank').then(res=>{
+      console.log('res',res);
+    })
+  },
   mounted(){
-    // var options = {
-    //   enableHighAccuracy: true,
-    //   timeout: 5000,
-    //   maximumAge: 0
-    // };
-
-    // function success(pos) {
-    //   var crd = pos.coords;
-
-    //   // if(crd){
-    //   //   this.lat = crd.latitude;
-    //   //   this.lng = crd.longitude;
-    //   // }else{
-    //   //   this.lat = crd.latitude;
-    //   //   this.lng = crd.longitude;
-    //   // }
-    //   this.lat = crd.latitude;
-    //   this.lng = crd.longitude;
-
-    //   console.log('Your current position is:');
-    //   console.log('Latitude : ' + crd.latitude);
-    //   console.log('Longitude: ' + crd.longitude);
-    //   console.log('More or less ' + crd.accuracy + ' meters.');
-    // };
-
-    // function error(err) {
-    //   console.warn('ERROR(' + err.code + '): ' + err.message);
-    // };
-
-    // navigator.geolocation.getCurrentPosition(success, error, options);
-    //console.log(this.mapOptions.lat,this.mapOptions.lng)
+    // axios.get('https://jsonplaceholder.typicode.com/posts/1')
+    //   .then(function(response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   }
 }
 </script>
@@ -62,9 +59,23 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: aqua;
+  background-color: #001c48 ;
   margin-top: 60px;
   height: 100%;
   width: 100%;
+}
+
+.mainLogo{
+  height: 10%;
+  width: 10%;
+}
+
+.mainSection{
+  /* position: absolute; */
+  width: 100%;
+  height: 500px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
 }
 </style>
