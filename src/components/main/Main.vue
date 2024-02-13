@@ -10,9 +10,9 @@ export default {
     return{
       mapOptions : {
           center: new naver.maps.LatLng(37.3595704, 127.105399),
-          zoom: 8,
-          lat: 37.3595704,
-          lng: 127.105399,
+          zoom: 10,
+          lat: 36.3595704,
+          lng: 127.705399,
       },
     }
   },
@@ -78,7 +78,7 @@ export default {
 
 <style>
 .naverMap{
-  width: 400px;
-  height: 400px;
+  width: 40%;
+  height: 100%;
 }
 </style>
