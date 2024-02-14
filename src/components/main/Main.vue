@@ -1,8 +1,11 @@
 <template>
-  <div class="naverMap" id="map"></div>
+  <div class="naverMap" id="map">
+    <!-- <img src="../../assets/geojson/hangjeongdong_gwd.geojson" alt=""> -->
+  </div>
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   name:'naverMap',
@@ -41,38 +44,28 @@ export default {
               position: naver.maps.Position.TOP_LEFT
           },
           mapTypeControl: false
-    });
+    },
+    
+    // 지도 그려진 후에 geojson 그리기
+    this.drawGeojson(),
 
-    // var options = {
-    //   enableHighAccuracy: true,
-    //   timeout: 5000,
-    //   maximumAge: 0
-    // };
+  
+    );
 
-    // function success(pos) {
-    //   var crd = pos.coords;
+    console.log('map',map)
 
-    //   if(crd){
-    //     this.mapOptions.lat = crd.latitude;
-    //     this.mapOptions.lng = crd.longitude;
-    //   }else{
-    //     this.mapOptions.lat = crd.latitude;
-    //     this.mapOptions.lng = crd.longitude;
-    //   }
+  },
+  methods:{
+    drawGeojson(){
+      console.log('drawGeojson');
+      
+      // 대한민국 geosjon 영역 불러오기 테스트
+      axios.get("/geojson/hangjeongdong_gwd.geojson").then(res=>{
+        console.log('res',res)
+      })
 
-    //   console.log('Your current position is:');
-    //   console.log('Latitude : ' + crd.latitude);
-    //   console.log('Longitude: ' + crd.longitude);
-    //   console.log('More or less ' + crd.accuracy + ' meters.');
-    // };
-
-    // function error(err) {
-    //   console.warn('ERROR(' + err.code + '): ' + err.message);
-    // };
-
-    // navigator.geolocation.getCurrentPosition(success, error, options);
-    // console.log(this.mapOptions.lat,this.mapOptions.lng)
-  }
+    }
+  },
 }  
 </script>
 

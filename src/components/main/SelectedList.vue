@@ -1,5 +1,7 @@
 <template>
-  <div class="selectedList"> 선택된 팀 혹은 지도영역의 정보</div>
+  <div class="selectedList"> 
+    선택된 팀 혹은 지도영역의 정보
+  </div>
 </template>
 
 <script>
