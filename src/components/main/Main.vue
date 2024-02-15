@@ -10,7 +10,7 @@ import { computed } from "vue";
 import { mapGetters, useStore } from "vuex";
 import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default {
   name:'naverMap',
   // data(){
   //   return{
@@ -32,8 +32,8 @@ export default defineComponent({
     const mapOptions = {
       center: new naver.maps.LatLng(37.3595704, 127.105399),
       zoom: 10,
-      lat: 36.3595704,
-      lng: 127.705399,
+      lat: 36.0595704,
+      lng: 128.005399,
     }
 
     const geojsonData = {};
@@ -48,7 +48,6 @@ export default defineComponent({
       mapOptions,
       geojsonData,
       geojsonUrl,
-
       selectedArea,
       clickArea
     }
@@ -57,14 +56,14 @@ export default defineComponent({
 
   },
   created(){
-    console.log('created',this)
+    // console.log('created',this)
   },
   mounted(){
-    // console.log('mounted',this)
+    // console.log('mounted',JSON.parse(JSON.stringify(this)))
     // var map = new naver.maps.Map('map', this.mapOptions);
     let map = new naver.maps.Map('map', {
           center: new naver.maps.LatLng(this.mapOptions.lat,this.mapOptions.lng), //좌표
-          zoom: 6, //지도의 초기 줌 레벨
+          zoom: 7, //지도의 초기 줌 레벨
           minZoom: 6, //지도의 최소 줌 레벨,
           maxZoom : 14, // 지도 최대 줌 레벨
           draggable: true,
@@ -82,35 +81,15 @@ export default defineComponent({
               position: naver.maps.Position.TOP_LEFT
           },
           mapTypeControl: false
-    }
-    // 지도 그려진 후에 geojson 그리기
-    // this.drawGeojson(),
+    });
 
-    // this.startDataLayer(map , this.geojsonUrl),
-
-  
-    );
-
-    this.startDataLayer(map),
-    console.log('map',map)
-
-    // this.clickArea(46);
-
-    console.log('selectedArea',this.selectedArea)
-
+    this.startDataLayer(map);
   },
   methods:{
-    // drawGeojson(){
-    //   console.log('drawGeojson');
-    // },
-    test(test){
-      console.log('test',test)
-    },
-
-    startDataLayer(map) {     console.log('startDataLayer',this)
+    startDataLayer(map) {     
 
         // 대한민국 전국 geojson 파일 불러오기
-        return axios.get("/geojson/TL_SCCO_CTPRVN.json").then(res=>{
+        axios.get("/geojson/TL_SCCO_CTPRVN.json").then(res=>{
           // let features = res.data.features;
 
           res.data.features.forEach(feature=>{
@@ -133,19 +112,29 @@ export default defineComponent({
                     strokeWeight: 2,
                     icon: null
                 };
-            });
+            }.bind(this));
 
           })
 
           // 해당영역 클릭 이벤트
           map.data.addListener('click', function(e) {
-            // 단일 영역만 선택이 되어야함
-            // this.clickArea(e.feature.property_CTPRVN_CD);
-            console.log('this',this)
 
+            /** 
+             * <영역 초기화>
+             * 선택되어져 있는 영역이 있으면서,
+             * 기존선택영역과 현재선택영역이 다르면
+             */
+            if(this.selectedArea != undefined 
+            && this.selectedArea.feature.property_CTPRVN_CD != e.feature.property_CTPRVN_CD){
+              this.selectedArea.feature.setProperty('isColorful', false);
+            }
+
+            // 단일 영역만 선택이 되어야함
+            this.clickArea(e);
             e.feature.setProperty('isColorful', true);
+            
             console.log('영역 클릭', e.feature.property_CTP_KOR_NM , e)
-          });
+          }.bind(this));
 
           // 해당영역 마우스 오버
           map.data.addListener('mouseover', function(e) {
@@ -177,7 +166,7 @@ export default defineComponent({
 
     }
   },
-})  
+}
 </script>
 
 <style>

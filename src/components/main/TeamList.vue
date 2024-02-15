@@ -16,15 +16,25 @@ export default {
   data(){
     return{
       teamList : {},
+      teamList2 : {},
     }
   },
   created(){
-    axios.get("/etc/teamList.json").then(res=>{
-        let team = res.data.data;
-        let teamList = team.teamNameList;
-        // console.log('team',team,teamList);
-        this.teamList = teamList;
-      })
+    // k리그1 팀 리스트 불러오기
+    axios.get("/etc/teamList1.json").then(res=>{
+      let team = res.data.data;
+      let teamList = team.teamNameList;
+      // console.log('team',team,teamList);
+      this.teamList = teamList;
+    })
+
+    // k리그2 팀 리스트 불러오기
+    axios.get("/etc/teamList2.json").then(res=>{
+      let team = res.data.data;
+      let teamList = team.teamNameList;
+      // console.log('team',team,teamList);
+      this.teamList2 = teamList;
+    })
   },
 }
 </script>

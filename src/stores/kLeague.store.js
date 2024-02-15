@@ -16,7 +16,7 @@ export default createStore({
     },
     actions: {
         FETCH_SELECTED_AREA({commit},selectedArea){
-            console.log('FETCH_SELECTED_AREA',selectedArea);
+            // console.log('FETCH_SELECTED_AREA',selectedArea);
             commit('SELECTED_AREA',selectedArea);
         }
     },

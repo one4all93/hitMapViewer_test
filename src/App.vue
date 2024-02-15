@@ -53,13 +53,17 @@ export default {
 </script>
 
 <style>
+body{
+  background-color: #001c48 ;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #001c48 ;
+  /* background-color: #001c48 ; */
   margin-top: 60px;
   height: 100%;
   width: 100%;
@@ -68,12 +72,13 @@ export default {
 .mainLogo{
   height: 10%;
   width: 10%;
+  margin-bottom: 2%;
 }
 
 .mainSection{
   /* position: absolute; */
   width: 100%;
-  height: 500px;
+  height: 700px;
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
