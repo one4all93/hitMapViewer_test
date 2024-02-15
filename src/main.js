@@ -1,4 +1,10 @@
 import { createApp } from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import kLeagueStore from './stores/kLeague.store.js'
+
+createApp(App)
+    .use(Vuex)
+    .use(kLeagueStore)
+    .mount('#app');
