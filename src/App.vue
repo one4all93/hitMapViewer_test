@@ -1,6 +1,6 @@
 <template>
   <!-- 로고 k리그 관련 이미지로 바꾸기 -->
-  <img class="mainLogo" alt="K-league logo" src="./assets/kMarker.svg">
+  <img class="mainLogo" alt="K-league logo" src="./assets/images/kMarker.svg">
 
   <div class="mainSection">
     <!-- 구단 리스트 -->
@@ -53,12 +53,18 @@ export default {
 </script>
 
 <style>
+
+@font-face {
+  font-family: 'kLeague';
+  src: url(../src/assets/fonts/KLeagueBasic-Medium.otf);
+}
+
 body{
   background-color: #001c48 ;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: kLeague;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
