@@ -70,21 +70,21 @@ body{
   text-align: center;
   color: #2c3e50;
   /* background-color: #001c48 ; */
-  margin-top: 60px;
+  margin-top: 10px;
   height: 100%;
   width: 100%;
 }
 
 .mainLogo{
-  height: 10%;
-  width: 10%;
-  margin-bottom: 2%;
+  height: 8%;
+  width: 8%;
+  margin-bottom: 10px;
 }
 
 .mainSection{
   /* position: absolute; */
   width: 100%;
-  height: 700px;
+  height: 650px;
   display: flex;
   /* justify-content: space-between; */
   align-items: center;

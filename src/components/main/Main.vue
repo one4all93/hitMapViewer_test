@@ -127,6 +127,12 @@ export default {
             if(this.selectedArea != undefined 
             && this.selectedArea.feature.property_CTPRVN_CD != e.feature.property_CTPRVN_CD){
               this.selectedArea.feature.setProperty('isColorful', false);
+            }else if(this.selectedArea != undefined 
+                  && this.selectedArea.feature.property_CTPRVN_CD == e.feature.property_CTPRVN_CD){
+              console.log('같은영역 클릭');
+              // this.clickArea(undefined);
+              // this.selectedArea.feature.setProperty('isColorful', false);
+              // map.data.revertStyle();
             }
 
             // 단일 영역만 선택이 되어야함
@@ -137,10 +143,11 @@ export default {
           }.bind(this));
 
           // 해당영역 마우스 오버
-          map.data.addListener('mouseover', function(e) {
+          map.data.addListener('mouseover', function(e) { console.log('mouseover',e.feature.property_CTP_KOR_NM)
               map.data.overrideStyle(e.feature, {
-                  strokeWeight: 4,
-                  // icon: HOME_PATH +'/img/example/pin_spot.png'
+                strokeColor : 'red',
+                strokeWeight: 4,
+                title : e.feature.property_CTP_KOR_NM,
               });
           });
 
