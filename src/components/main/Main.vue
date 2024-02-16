@@ -44,12 +44,16 @@ export default {
     const selectedArea = computed(()=> store.getters.getSelectedArea);
     const clickArea = (areaCd) => store.dispatch('FETCH_SELECTED_AREA',areaCd);
 
+    const selectedTeam = computed(()=> store.getters.getSelectedTeam);
+
     return {
       mapOptions,
       geojsonData,
       geojsonUrl,
       selectedArea,
-      clickArea
+      clickArea,
+
+      selectedTeam,
     }
   },
   components:{
@@ -84,6 +88,11 @@ export default {
     });
 
     this.startDataLayer(map);
+  },
+  watch:{
+    selectedTeam(newVal,oldVal){
+      console.log('watch::selectedTeam',oldVal,newVal);
+    }
   },
   methods:{
     startDataLayer(map) {     
@@ -143,7 +152,8 @@ export default {
           }.bind(this));
 
           // 해당영역 마우스 오버
-          map.data.addListener('mouseover', function(e) { console.log('mouseover',e.feature.property_CTP_KOR_NM)
+          map.data.addListener('mouseover', function(e) { 
+              // console.log('mouseover',e.feature.property_CTP_KOR_NM);
               map.data.overrideStyle(e.feature, {
                 strokeColor : 'red',
                 strokeWeight: 4,
@@ -155,6 +165,7 @@ export default {
           map.data.addListener('mouseout', function(e) {
               map.data.revertStyle();
           });
+
 
         });
 

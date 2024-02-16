@@ -123,6 +123,10 @@ export default {
   margin: 2%;
 }
 
+.off:hover{
+  color: red;
+}
+
 .on{
   color: aliceblue;
 }
@@ -144,6 +148,7 @@ export default {
   font-size: 150%;
   color: aliceblue;
   cursor: pointer;
+  margin: 1%;
 }
 
 .teamList .teamBox:hover{
