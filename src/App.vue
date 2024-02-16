@@ -13,6 +13,10 @@
     <SelectedList />
   </div>
 
+  <div class="notice">
+    <text style="font-size: 40%;">※ 본 사이트는 개발공부용으로 개발 중인 사이트입니다. ※</text>
+  </div>
+
 </template>
 
 <script>
@@ -88,5 +92,9 @@ body{
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
+}
+
+.notice{
+  color: azure;
 }
 </style>

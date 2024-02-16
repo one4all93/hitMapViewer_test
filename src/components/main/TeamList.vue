@@ -9,10 +9,12 @@
     </h1>
     <h1 class="tit">팀 리스트 </h1>
     <div class="list">
-      <div class="teamBox" 
+      <div :class="'teamBox ' + (selectedTeam != undefined && selectedTeam.teamId == team.teamId ? 'selected' : 'unselected')" 
            @click.prevent="selectTeam(team)"
            v-for="(team,idx) in teamIfo[selctedDiv].teamList" :key="idx"> 
-          {{ team.teamNm }} 
+          <text>
+            {{ team.teamNm }} 
+          </text>
       </div>
     </div>
   </div>
@@ -109,8 +111,13 @@ export default {
       this.selctedDiv = div;
     },
     selectTeam(team){
-      console.log('selectTeam', team , this);
-      this.clickTeam(team);
+      // console.log('selectTeam', team , this);
+      if(this.selectedTeam != undefined 
+      && this.selectedTeam.teamId == team.teamId){
+        this.clickTeam(undefined);
+      }else{
+        this.clickTeam(team);
+      }
     }
   }
 }
@@ -146,13 +153,25 @@ export default {
 
 .teamList .teamBox{
   font-size: 150%;
-  color: aliceblue;
-  cursor: pointer;
+  /* color: aliceblue; */
+  /* cursor: pointer; */
   margin: 1%;
 }
 
-.teamList .teamBox:hover{
+.teamList .teamBox text{
+  cursor: pointer;
+}
+
+.teamList .teamBox text:hover{
   color: skyblue;
+}
+
+.selected{
+  color: skyblue;
+}
+
+.unselected{
+  color: aliceblue;
 }
 
 .teamList .list{

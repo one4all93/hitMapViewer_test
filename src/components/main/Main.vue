@@ -91,7 +91,10 @@ export default {
   },
   watch:{
     selectedTeam(newVal,oldVal){
-      console.log('watch::selectedTeam',oldVal,newVal);
+      console.log('watch::selectedTeam',newVal);
+    },
+    selectedArea(newVal,oldVal){
+      console.log('watch::selectedArea',newVal.feature);
     }
   },
   methods:{
@@ -148,7 +151,7 @@ export default {
             this.clickArea(e);
             e.feature.setProperty('isColorful', true);
             
-            console.log('영역 클릭', e.feature.property_CTP_KOR_NM , e)
+            // console.log('영역 클릭', e.feature.property_CTP_KOR_NM , e)
           }.bind(this));
 
           // 해당영역 마우스 오버

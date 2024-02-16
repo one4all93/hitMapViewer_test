@@ -1,12 +1,35 @@
 <template>
   <div class="selectedList"> 
-    선택된 팀 혹은 지도영역의 정보
+
+    <div class="selectedTeam">
+      {{ selectedTeam != undefined ? selectedTeam.teamNm : undefined }}
+    </div>
+
   </div>
 </template>
 
 <script>
-export default {
+import axios from 'axios';
+import { computed } from "vue";
+import { mapGetters, useStore } from "vuex";
 
+export default {
+  name : 'selectedList',
+  data(){
+    return{
+
+    }
+  },
+  setup(){
+    const store = useStore();
+
+    const selectedTeam = computed(()=> store.getters.getSelectedTeam);
+    // const clickTeam = (team) => store.dispatch('FETCH_SELECTED_TEAM',team);
+
+    return {
+      selectedTeam,
+    }
+  },
 }
 </script>
 
@@ -14,5 +37,10 @@ export default {
 .selectedList{
     width: 30%;
     height: 100%;
+}
+
+.selectedTeam{
+  font-size: 150%;
+  color: aliceblue;
 }
 </style>
